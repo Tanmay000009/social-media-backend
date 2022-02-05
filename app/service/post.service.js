@@ -2,6 +2,7 @@
 
 /** load peer modules and services */
 const Post = require("../models/post");
+const { CommentService } = require("../service/comment.service");
 
 /**
  * PostService operates on the data layer of the application, and performs *all* db operations.
@@ -60,8 +61,13 @@ class PostService {
    * Deletes the post
    */
   static async deletePost(id) {
-    const post = await Post.findByIdAndDelete(id);
-    return post;
+    const post = await Post.findById(id);
+    const { comments } = post;
+    await comments.forEach(async (comment) => {
+      await CommentService.deleteComment(comment);
+    });
+    const deletedPost = await Post.findByIdAndDelete(id);
+    return deletedPost;
   }
 }
 
