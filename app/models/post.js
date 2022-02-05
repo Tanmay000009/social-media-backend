@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema(
   {
-    content: {
+    contentURL: {
+      type: String,
+      required: true,
+    },
+    caption: {
       type: String,
       required: true,
     },
