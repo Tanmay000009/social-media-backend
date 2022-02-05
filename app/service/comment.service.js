@@ -62,8 +62,14 @@ class CommentService {
    * Deletes the comment
    */
   static async deleteComment(id) {
-    const comment = await Comment.findByIdAndDelete(id);
-    return comment;
+    const comment = await Comment.findById(id);
+    const { post } = comment;
+    Post.findOne({ _id: post }, (err, p) => {
+      p.comments.remove(comment._id);
+      p.save();
+    });
+    const deletedComment = await Comment.findByIdAndDelete(id);
+    return deletedComment;
   }
 }
 
