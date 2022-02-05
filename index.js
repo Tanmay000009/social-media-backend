@@ -4,6 +4,7 @@ const cors = require("cors");
 
 /** load modules as routes */
 const initializeMongoDB = require("./app/database/db");
+const PostRoutes = require("./app/routes/post");
 
 dotenv.config();
 
@@ -21,6 +22,8 @@ initializeMongoDB();
 app.get("/", (req, res) => {
   res.send("<h1>👋🏻 Hello from Backend</h1>");
 });
+
+app.use("/posts", PostRoutes);
 
 app.listen(PORT, (err) => {
   if (err) {
