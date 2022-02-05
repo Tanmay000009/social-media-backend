@@ -32,9 +32,10 @@ class PostService {
    * @returns the created Post in the system
    */
   static async registerPost(body) {
-    const { content, comments, likes } = body;
+    const { contentURL, caption, comments, likes } = body;
     const post = new Post({
-      content,
+      contentURL,
+      caption,
       comments,
       likes,
     });
@@ -48,9 +49,10 @@ class PostService {
    * @returns the updated post
    */
   static async updatePost(postId, obj) {
-    console.log(obj);
-
-    const post = await Post.findByIdAndUpdate(postId, obj);
+    var post = null;
+    await Post.findByIdAndUpdate(postId, obj).then((updatedPost) => {
+      post = updatedPost;
+    });
     return post;
   }
 
