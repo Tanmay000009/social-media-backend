@@ -1,0 +1,30 @@
+{
+  "name": "social-media-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tanmay000009/social-media-backend.git"
+  },
+  "author": "Tanmay Vyas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tanmay000009/social-media-backend/issues"
+  },
+  "homepage": "https://github.com/Tanmay000009/social-media-backend#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-validator": "^6.14.0",
+    "mongoose": "^6.2.0"
+  }
+}
