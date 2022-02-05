@@ -2,6 +2,7 @@
 
 /** load peer modules and services */
 const Comment = require("../models/comment");
+const Post = require("../models/post");
 
 /**
  * CommentService operates on the data layer of the application, and performs *all* db operations.
@@ -38,7 +39,10 @@ class CommentService {
       post,
     });
     const newComment = await comment.save();
-    console.log(newComment);
+    const updatedPost = await Post.updateOne(
+      { _id: post },
+      { $push: { comments: [newComment._id] } }
+    );
     return newComment;
   }
 
