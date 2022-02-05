@@ -1,7 +1,6 @@
 /** load required packages */
 
 /** load peer modules and services */
-const res = require("express/lib/response");
 const { PostService } = require("../service/post.service");
 
 /**
